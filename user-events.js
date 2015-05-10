@@ -2,7 +2,7 @@ var app = angular.module('timelineApp', []);
 app.controller('UserEventController', function($scope, $http) {
 	
 	$scope.fetchEvents = function() {
-
+		$('#loader').show();
 		
 		FB.api('/me/posts?limit=10000', function(response) {
 			var events = [];
@@ -37,9 +37,10 @@ app.controller('UserEventController', function($scope, $http) {
 				return d-c;
 				});
 				$scope.$apply();
+				$('#cd-timeline').show();
 				});
+				$('#loader').hide();
 
-				// serverEvents = '{"data":[{"type":"other", "title":"A","picture":"https://fbcdn-vthumb-a.akamaihd.net/hvthumb-ak-xfp1/v/t15.0-10/p130x130/11188847_761161560663386_126597787_n.jpg?oh=50dbde3a0df7ce600adbf9cfbb176062&oe=55C0B1F4&__gda__=1440684883_c4c5b14328d7b3311740688e4b7c75a1","date":"2015-05-05T04:13:05+0000"},{"type":"other","title":"B","picture":"https://fbcdn-vthumb-a.akamaihd.net/hvthumb-ak-xfp1/v/t15.0-10/p130x130/11188847_761161560663386_126597787_n.jpg?oh=50dbde3a0df7ce600adbf9cfbb176062&oe=55C0B1F4&__gda__=1440684883_c4c5b14328d7b3311740688e4b7c75a1","date":"2015-05-05T03:13:05+0000"},{"type":"other", "title":"C","picture":"https://fbcdn-vthumb-a.akamaihd.net/hvthumb-ak-xfp1/v/t15.0-10/p130x130/11188847_761161560663386_126597787_n.jpg?oh=50dbde3a0df7ce600adbf9cfbb176062&oe=55C0B1F4&__gda__=1440684883_c4c5b14328d7b3311740688e4b7c75a1","date":"2015-05-05T02:13:05+0000"},{"type":"other", "title":"D","picture":"https://fbcdn-vthumb-a.akamaihd.net/hvthumb-ak-xfp1/v/t15.0-10/p130x130/11188847_761161560663386_126597787_n.jpg?oh=50dbde3a0df7ce600adbf9cfbb176062&oe=55C0B1F4&__gda__=1440684883_c4c5b14328d7b3311740688e4b7c75a1","date":"2015-05-05T01:13:05+0000"}]}';
 		});
 		
 		var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -49,7 +50,7 @@ app.controller('UserEventController', function($scope, $http) {
 			return date.getDate() + " " + months[date.getMonth()] +" "+date.getFullYear();
 		};
 		
-		$('#cd-timeline').show();
+		
 
 
 	};

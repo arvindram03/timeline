@@ -16,6 +16,7 @@
 <body ng-app="timelineApp">
 	<script src="fb.js"></script>	
 	<script src="user-events.js"></script>
+	<div id="loader"><img src="img/loading.gif" class="loaderImg"></div>
 	<div ng-controller="UserEventController as userCntrl">
 	<header id="header">
 		<span>Login to see who you are!!</span><img src="img/fb.svg" class="social-media-logo" onclick="login();" ng-click="fetchEvents();">
